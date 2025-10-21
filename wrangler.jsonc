@@ -3,9 +3,7 @@
   "name": "simple-start",
   "main": "src/worker.tsx",
   "compatibility_date": "2025-08-29",
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
+  "compatibility_flags": ["nodejs_compat"],
   "assets": {
     "binding": "ASSETS",
     "directory": "public"
@@ -13,7 +11,10 @@
   "observability": {
     "enabled": true
   },
-  "vars": {},
+  "vars": {
+    "API_FOOTBALL_API_KEY": "00fbf30eac06f31e6b7b8896b59638bc",
+    "API_FOOTBALL_URL": "https://v3.football.api-sports.io/"
+  },
   "d1_databases": [
     {
       "binding": "DB",
@@ -26,6 +27,6 @@
     {
       "binding": "R2",
       "bucket_name": "simple-start"
-    },
+    }
   ]
 }

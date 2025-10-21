@@ -3,6 +3,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    environment:
+      - API_FOOTBALL_API_KEY=00fbf30eac06f31e6b7b8896b59638bc
+      - API_FOOTBALL_URL=https://v3.football.api-sports.io/
     ports:
       - "5173:5173"
     volumes:
