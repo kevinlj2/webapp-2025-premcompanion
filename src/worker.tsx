@@ -6,13 +6,9 @@ import { User, users } from "./db/schema/user-schema";
 import { setCommonHeaders } from "./app/headers";
 import { env } from "cloudflare:workers";
 import { drizzle } from "drizzle-orm/d1";
-import TeamsPage from "./components/TeamsPage";
-import TransHisPage from "./components/TransHisPage";
-import HelpPage from "./components/HelpPage";
-import TicketsPage from "./components/TicketsPage";
-import HomePage from "./components/HomePage";
-import ProfilePage from "./components/ProfilePage";
-import ContactPage from "./components/ContactPage";
+import { Home } from "./app/pages/Home";
+import { TeamsPage } from "./app/pages/Teams";
+import { ProfilePage } from "./app/pages/ProfilePage";
 
 export interface Env {
   DB: D1Database;
@@ -46,12 +42,12 @@ export default defineApp([
     }),
   ]),
   render(Document, [
-    route("/", HomePage),
+    route("/", Home),
     route("/teams", TeamsPage),
-    route("/tickets", TicketsPage),
-    route("/history", TransHisPage),
-    route("/help", HelpPage),
-    route("/contact", ContactPage),
+    //route("/tickets", TicketsPage),
+    //route("/history", TransHisPage),
+    //route("/help", HelpPage),
+    //route("/contact", ContactPage),
     route("/profile", ProfilePage),
   ]),
 ]);
