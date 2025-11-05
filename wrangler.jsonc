@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "simple-start",
+  "name": "premcompanion",
   "main": "src/worker.tsx",
   "compatibility_date": "2025-08-29",
   "compatibility_flags": ["nodejs_compat"],
@@ -10,10 +10,6 @@
   },
   "observability": {
     "enabled": true
-  },
-  "vars": {
-    "FOOTBALL_API_KEY": "00fbf30eac06f31e6b7b8896b59638bc",
-    "API_FOOTBALL_URL": "https://v3.football.api-sports.io/"
   },
   "d1_databases": [
     {
@@ -26,7 +22,8 @@
   "r2_buckets": [
     {
       "binding": "R2",
-      "bucket_name": "simple-start"
+      "bucket_name": "simple-start",
+      "preview_bucket_name": "simple-start-dev"
     }
   ]
 }
