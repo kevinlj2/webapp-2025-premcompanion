@@ -22,7 +22,7 @@ const fixturesList: fixture[] = [
     awayTeam: "Bournemouth",
     date: "2025-11-29",
     time: "15:00",
-    stadium: "Gtech Community Stadium",
+    stadium: "Stadium of Light",
   },
   {
     id: 3,
@@ -70,7 +70,7 @@ const fixturesList: fixture[] = [
     awayTeam: "Wolves",
     date: "2025-11-30",
     time: "14:05",
-    stadium: "London Stadium",
+    stadium: "Villa Park",
   },
   {
     id: 9,

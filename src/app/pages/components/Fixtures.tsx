@@ -14,7 +14,7 @@ export default function Fixtures() {
             className="flex items-center justify-between p-4 hover:bg-gray-50 transition"
           >
             <div className="flex flex-col items-center justify-center w-16 text-gray-700 font-semibold">
-              <span className="text-xs uppercase">Sep</span>
+              <span className="text-xs uppercase">Nov</span>
               <span className="text-2xl font-bold">
                 {new Date(fixture.date).getDate()}
               </span>
