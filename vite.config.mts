@@ -14,11 +14,11 @@ export default defineConfig({
     ssr: {},
   },
   plugins: [
-    tailwindcss(),
     cloudflare({
       viteEnvironment: { name: "worker" },
     }),
     redwood(),
+    tailwindcss(),
     react({
       babel: {
         plugins: ["babel-plugin-react-compiler"],
