@@ -39,9 +39,6 @@ export function ProfilePage() {
       <p>
         <a href="/forgot-password">Forgot password?</a>
       </p>
-
-      <h2>Profile Page</h2>
-      <p>This is where the user profile information will be displayed.</p>
     </div>
   );
 }
