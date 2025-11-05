@@ -7,8 +7,10 @@ import { setCommonHeaders } from "./app/headers";
 import { env } from "cloudflare:workers";
 import { drizzle } from "drizzle-orm/d1";
 import { Home } from "./app/pages/Home";
-import { TeamsPage } from "./app/pages/Teams";
+import { TeamsPage } from "./app/pages/TeamsPage";
 import { ProfilePage } from "./app/pages/ProfilePage";
+import { TransactionHistory } from "./app/pages/TransactionHistory";
+import { TicketsPage } from "./app/pages/TicketsPage";
 
 export interface Env {
   DB: D1Database;
@@ -44,8 +46,8 @@ export default defineApp([
   render(Document, [
     route("/", Home),
     route("/teams", TeamsPage),
-    //route("/tickets", TicketsPage),
-    //route("/history", TransHisPage),
+    route("/tickets", TicketsPage),
+    route("/history", TransactionHistory),
     //route("/help", HelpPage),
     //route("/contact", ContactPage),
     route("/profile", ProfilePage),
