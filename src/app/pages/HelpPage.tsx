@@ -1,4 +1,4 @@
-export default function HelpPage() {
+export function HelpPage() {
   return (
     <div>
       <h2>Help Page</h2>

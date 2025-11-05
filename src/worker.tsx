@@ -11,6 +11,8 @@ import { TeamsPage } from "./app/pages/TeamsPage";
 import { ProfilePage } from "./app/pages/ProfilePage";
 import { TransactionHistory } from "./app/pages/TransactionHistory";
 import { TicketsPage } from "./app/pages/TicketsPage";
+import { HelpPage } from "./app/pages/HelpPage";
+import { ContactPage } from "./app/pages/ContactPage";
 
 export interface Env {
   DB: D1Database;
@@ -48,8 +50,8 @@ export default defineApp([
     route("/teams", TeamsPage),
     route("/tickets", TicketsPage),
     route("/history", TransactionHistory),
-    //route("/help", HelpPage),
-    //route("/contact", ContactPage),
+    route("/help", HelpPage),
+    route("/contact", ContactPage),
     route("/profile", ProfilePage),
   ]),
 ]);
