@@ -2,17 +2,15 @@ import { defineApp } from "rwsdk/worker";
 import { prefix, render, route } from "rwsdk/router";
 import { Document } from "@/app/Document";
 
-import { User, users } from "./db/schema/user-schema";
+import { User } from "./db/schema/user-schema";
 import { setCommonHeaders } from "./app/headers";
-import { env } from "cloudflare:workers";
-import { drizzle } from "drizzle-orm/d1";
 import { Home } from "./app/pages/Home";
 import { TeamsPage } from "./app/pages/TeamsPage";
 import { ProfilePage } from "./app/pages/ProfilePage";
 import { TransactionHistory } from "./app/pages/TransactionHistory";
-import { TicketsPage } from "./app/pages/TicketsPage";
 import { HelpPage } from "./app/pages/HelpPage";
 import { ContactPage } from "./app/pages/ContactPage";
+import { TicketsPage } from "./app/pages/TicketsPage";
 
 export interface Env {
   DB: D1Database;
@@ -34,7 +32,7 @@ export default defineApp([
           headers: { "Content-Type": "application/json" },
         })
     ),
-    route("/:id", (ctx) => {
+    route("/:id", (ctx: { params: { id: any } }) => {
       const { id } = ctx.params;
       return new Response(
         JSON.stringify({ message: `Prem Root ${id}`, success: true }),
