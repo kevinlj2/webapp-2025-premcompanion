@@ -46,7 +46,7 @@ export default defineApp([
   render(Document, [
     route("/", Home),
     route("/teams", TeamsPage),
-    route("/tickets", TicketsPage),
+    route("/tickets/:fixtureId", TicketsPage),
     route("/history", TransactionHistory),
     route("/help", HelpPage),
     route("/contact", ContactPage),

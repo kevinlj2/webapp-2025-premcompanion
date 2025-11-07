@@ -1,8 +1,34 @@
 "use client";
 import { useState } from "react";
 import Layout from "./components/Layout";
+import { fixturesList } from "../lib/fixtures";
 
-export function TicketsPage() {
+interface TicketsPageProps {
+  params: {
+    fixtureId: string;
+  };
+}
+
+export function TicketsPage({ params }: TicketsPageProps) {
+  // Finn riktig kamp basert på URL-parametere
+  const fixtureId = Number(params.fixtureId);
+  const fixture = fixturesList.find((f) => f.id === fixtureId);
+
+  // Håndter hvis ID ikke finnes
+  if (!fixture) {
+    return (
+      <Layout>
+        <main className="flex flex-col justify-center items-center min-h-screen text-gray-700">
+          <h2 className="text-2xl font-semibold mb-4">Fixture not found</h2>
+          <a href="/fixtures" className="text-blue-600 hover:underline text-sm">
+            ← Back to fixtures
+          </a>
+        </main>
+      </Layout>
+    );
+  }
+
+  // Filter-state
   const [ticketQuantity, setTicketQuantity] = useState<number | "ANY">("ANY");
   const [fanSide, setFanSide] = useState("All");
   const [priceRange, setPriceRange] = useState<[number, number]>([181, 3117]);
@@ -14,7 +40,14 @@ export function TicketsPage() {
         {/* Main Content */}
         <main className="flex-1 p-8">
           <div className="flex justify-between items-center mb-6">
-            <h1 className="text-3xl font-bold">Cart</h1>
+            <div>
+              <h1 className="text-3xl font-bold mb-1">
+                {fixture.homeTeam} vs {fixture.awayTeam}
+              </h1>
+              <p className="text-gray-600 text-sm">
+                {fixture.date} • {fixture.time}
+              </p>
+            </div>
             <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md">
               Logout
             </button>
@@ -24,7 +57,7 @@ export function TicketsPage() {
           <div className="bg-white shadow rounded-lg overflow-hidden mb-8">
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Tottenham_Hotspur_Stadium_-_interior_1.jpg/1280px-Tottenham_Hotspur_Stadium_-_interior_1.jpg"
-              alt="Tottenham Stadium"
+              alt={fixture.stadium}
               className="w-full h-64 object-cover"
             />
             <div className="p-6">
@@ -32,11 +65,18 @@ export function TicketsPage() {
                 ENGLISH PREMIER LEAGUE
               </p>
               <h2 className="text-2xl font-semibold mb-2">
-                Tottenham Hotspur vs Liverpool FC
+                {fixture.homeTeam} vs {fixture.awayTeam}
               </h2>
               <p className="text-gray-600">
-                🗓 Saturday, 20th December 2025 15:00 <br />
-                📍 Tottenham Hotspur Stadium, London, United Kingdom
+                🗓{" "}
+                {new Date(fixture.date).toLocaleDateString("en-GB", {
+                  weekday: "long",
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                })}{" "}
+                {fixture.time} <br />
+                📍 {fixture.stadium}
               </p>
             </div>
           </div>
@@ -132,13 +172,10 @@ export function TicketsPage() {
             </div>
           </div>
 
-          {/* Stadium Plan */}
-          <div className="bg-white shadow rounded-lg p-4 text-center">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Tottenham_Hotspur_Stadium_Seating_Plan.svg/1280px-Tottenham_Hotspur_Stadium_Seating_Plan.svg.png"
-              alt="Stadium seating plan"
-              className="mx-auto w-full max-w-3xl"
-            />
+          {/* Placeholder for ticket list */}
+          <div className="bg-white shadow rounded-lg p-6 text-center text-gray-600">
+            Available tickets for {fixture.homeTeam} vs {fixture.awayTeam} will
+            appear here.
           </div>
         </main>
       </div>

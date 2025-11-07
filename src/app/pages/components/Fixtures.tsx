@@ -35,9 +35,12 @@ export default function Fixtures() {
               </p>
             </div>
             <div>
-              <button className="bg-green-500 text-white text-sm font-semibold px-4 py-2 rounded-full hover:bg-green-600 transition">
+              <a
+                href={`/tickets/${fixture.id}`}
+                className="bg-green-500 text-white text-sm font-semibold px-4 py-2 rounded-full hover:bg-green-600 transition"
+              >
                 View Tickets
-              </button>
+              </a>
             </div>
           </div>
         ))}
