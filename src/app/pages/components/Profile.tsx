@@ -1,11 +1,12 @@
+"use client";
 import { useAuth } from "../components/Auth";
 
-export default function Profile() {
+export default function Profile({ logout }: { logout: () => void }) {
   const { isAuthenticated, isLoading, username } = useAuth();
 
   if (isLoading) return <p>Laster inn bruker...</p>;
   if (!isAuthenticated) {
-    window.location.href = "./Login";
+    window.location.href = "./login";
     return null;
   }
 

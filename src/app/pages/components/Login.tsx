@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import { useAuth } from "../components/Auth";
 
@@ -11,7 +12,7 @@ export default function Login() {
 
     if (emailOrUsername && password) {
       login(emailOrUsername);
-      window.location.href = "/Profile";
+      window.location.href = "./profile";
     } else {
       alert("Please fill in both fields");
     }
