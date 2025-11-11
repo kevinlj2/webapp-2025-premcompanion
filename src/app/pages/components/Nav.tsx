@@ -1,6 +1,6 @@
 export default function Nav() {
   return (
-    <nav className="w-56 bg-gray-800 text-white flex flex-col min-h-screen py-8">
+    <nav className="w-56 bg-gray-800 text-white flex flex-col min-h-screen py-8 z-50">
       <ul className="flex flex-col space-y-2">
         <li>
           <a
