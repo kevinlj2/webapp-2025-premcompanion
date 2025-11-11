@@ -1,8 +1,8 @@
 "use client";
 import { useAuth } from "../components/Auth";
 
-export default function Profile({ logout }: { logout: () => void }) {
-  const { isAuthenticated, isLoading, username } = useAuth();
+export default function Profile() {
+  const { isAuthenticated, isLoading, username, logout } = useAuth();
 
   if (isLoading) return <p>Laster inn bruker...</p>;
   if (!isAuthenticated) {
