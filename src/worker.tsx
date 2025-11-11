@@ -6,11 +6,12 @@ import { User } from "./db/schema/user-schema";
 import { setCommonHeaders } from "./app/headers";
 import { Home } from "./app/pages/Home";
 import { TeamsPage } from "./app/pages/TeamsPage";
-import { ProfilePage } from "./app/pages/ProfilePage";
 import { TransactionHistory } from "./app/pages/TransactionHistory";
 import { HelpPage } from "./app/pages/HelpPage";
 import { ContactPage } from "./app/pages/ContactPage";
 import { TicketsPage } from "./app/pages/TicketsPage";
+import { LoginPage } from "./app/pages/LoginPage";
+import { ProfilePage } from "./app/pages/ProfilePage";
 
 export interface Env {
   DB: D1Database;
@@ -51,5 +52,6 @@ export default defineApp([
     route("/help", HelpPage),
     route("/contact", ContactPage),
     route("/profile", ProfilePage),
+    route("/login", LoginPage),
   ]),
 ]);
