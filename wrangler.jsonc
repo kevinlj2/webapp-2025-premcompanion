@@ -14,8 +14,8 @@
   "d1_databases": [
     {
       "binding": "DB",
-      "database_name": "simple-start",
-      "database_id": "__change_me__",
+      "database_name": "premcompanion",
+      "database_id": "f13c5aba-b925-4c0a-ba7f-35bb4caffa69",
       "migrations_dir": "drizzle"
     }
   ],
