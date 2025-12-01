@@ -1,3 +1,4 @@
+// src/app/pages/components/Auth.tsx
 "use client";
 
 import { AuthContextType } from "@/app/lib/auth";
@@ -36,7 +37,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     localStorage.setItem("user", result.email);
 
     setIsAuthenticated(true);
-    setUsername(email);
+    setUsername(result.email);
   };
 
   const logout = () => {
