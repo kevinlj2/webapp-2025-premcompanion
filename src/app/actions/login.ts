@@ -1,11 +1,8 @@
-// src/app/actions/login.ts
 "use server";
 
 import { getDb } from "@/db/client";
 import { users } from "@/db/schema";
 import { eq } from "drizzle-orm";
-import { env } from "cloudflare:workers";
-import type { Env } from "@/env";
 import { verifyPassword } from "../lib/hash";
 
 type LoginSuccess = { ok: true; email: string };
@@ -15,28 +12,26 @@ export async function loginUser(
   email: string,
   password: string
 ): Promise<LoginSuccess | LoginFail> {
-  // The only correct cast:
-  const db = getDb(env as unknown as Env);
+  // THIS is the ONLY correct way in rwsdk server actions
+  const env = process.env as unknown as { premcompanion_db: D1Database };
 
-  const rows = await db
+  const db = getDb(env);
+
+  const user = await db
     .select()
     .from(users)
     .where(eq(users.email, email))
-    .all();
-
-  const user = rows[0];
+    .get();
 
   if (!user) {
     return { ok: false, message: "User not found" };
   }
 
   const valid = await verifyPassword(password, user.password);
+
   if (!valid) {
     return { ok: false, message: "Incorrect password" };
   }
 
-  return {
-    ok: true,
-    email: user.email,
-  };
+  return { ok: true, email: user.email };
 }
