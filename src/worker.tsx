@@ -13,6 +13,10 @@ import { LoginPage } from "./app/pages/LoginPage";
 import { ProfilePage } from "./app/pages/ProfilePage";
 import { RegisterPage } from "./app/pages/RegisterPage";
 
+export interface Env {
+  DB: D1Database;
+}
+
 export type AppContext = {
   user: User | undefined;
   authUrl: string;

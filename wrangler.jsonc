@@ -13,9 +13,9 @@
   },
   "d1_databases": [
     {
-      "binding": "premcompanion_db",
+      "binding": "DB",
       "database_name": "premcompanion-db",
-      "database_id": "353eef97-22ec-4d1d-9325-88974f7d7bae",
+      "database_id": "06c5d11a-64c6-4840-86d0-77eef85915be",
       "migrations_dir": "drizzle",
       "remote": true
     }

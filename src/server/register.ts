@@ -2,26 +2,15 @@
 
 import { getDb } from "@/db/client";
 import { users } from "@/db/schema";
-import { eq } from "drizzle-orm";
 import { env } from "cloudflare:workers";
+import type { Env } from "@/env";
 import { hashPassword } from "@/app/lib/hash";
 
 export async function registerUser(email: string, password: string) {
-  const db = getDb(env);
-
-  const existing = await db
-    .select()
-    .from(users)
-    .where(eq(users.email, email))
-    .get();
-
-  if (existing) {
-    return { ok: false, message: "User already exists" };
-  }
+  const db = getDb(env as unknown as Env);
 
   const hashed = await hashPassword(password);
+  await db.insert(users).values({ email, password: hashed });
 
-  await db.insert(users).values({ email, password: hashed }).run();
-
-  return { ok: true, email };
+  return { ok: true };
 }
