@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 import { useAuth } from "../components/Auth";
 
@@ -7,14 +8,19 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const { login } = useAuth();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (emailOrUsername && password) {
-      login(emailOrUsername);
-      window.location.href = "./profile";
-    } else {
+    if (!emailOrUsername || !password) {
       alert("Please fill in both fields");
+      return;
+    }
+
+    try {
+      await login(emailOrUsername, password);
+      window.location.href = "/profile";
+    } catch (err: any) {
+      alert(err.message);
     }
   };
 
@@ -31,13 +37,13 @@ export default function Login() {
 
         <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
           <div>
-            <label className="block font-semibold mb-1">Username/email:</label>
+            <label className="block font-semibold mb-1">Email:</label>
             <input
-              type="text"
+              type="email"
               value={emailOrUsername}
               onChange={(e) => setEmailOrUsername(e.target.value)}
+              className="w-full p-2 border border-gray-400 rounded"
               required
-              className="w-full p-2 border border-gray-400 rounded focus:outline-none focus:ring-2 focus:ring-gray-500"
             />
           </div>
 
@@ -47,17 +53,23 @@ export default function Login() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              className="w-full p-2 border border-gray-400 rounded"
               required
-              className="w-full p-2 border border-gray-400 rounded focus:outline-none focus:ring-2 focus:ring-gray-500"
             />
           </div>
 
-          <button
-            type="submit"
-            className="mt-4 bg-black text-white font-semibold py-2 rounded hover:bg-gray-800 transition"
-          >
+          <button className="mt-4 bg-black text-white font-semibold py-2 rounded hover:bg-gray-800">
             Login
           </button>
+          <p className="text-center mt-4">
+            Don't have an account?{" "}
+            <a
+              href="/register"
+              className="text-blue-600 font-semibold hover:underline"
+            >
+              Create one
+            </a>
+          </p>
         </form>
       </main>
     </div>
