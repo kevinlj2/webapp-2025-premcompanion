@@ -12,7 +12,6 @@ export async function loginUser(
   email: string,
   password: string
 ): Promise<LoginSuccess | LoginFail> {
-  // THIS is the ONLY correct way in rwsdk server actions
   const env = process.env as unknown as { premcompanion_db: D1Database };
 
   const db = getDb(env);
