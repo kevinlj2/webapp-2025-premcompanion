@@ -4,6 +4,9 @@
   "main": "src/worker.tsx",
   "compatibility_date": "2025-08-29",
   "compatibility_flags": ["nodejs_compat"],
+  "vars": {
+    "WRANGLER_DEV_BIND_REMOTE_D1": "true"
+  },
   "assets": {
     "binding": "ASSETS",
     "directory": "public"
@@ -16,6 +19,7 @@
       "binding": "DB",
       "database_name": "premcompanion-db",
       "database_id": "06c5d11a-64c6-4840-86d0-77eef85915be",
+      "preview_database_id": "06c5d11a-64c6-4840-86d0-77eef85915be",
       "migrations_dir": "drizzle",
       "remote": true
     }
