@@ -47,3 +47,7 @@ npm run dev
 Vi har ingen funksjoner som må testes utenfor nettsiden i seg selv.
 Alle funksjonene har en oppgave på nettsiden
 Alle tokens er i .env og config filene er wrangler.jasonc og drizzle.config.ts
+
+Det finnes allerede en konto som heter admin@admin.no og passordet er admin
+Noe av informasjonen er kun placeholder for å vise hvordan det ser ut.
+Det er mulig å lage egen konto hvis det ønskes.
