@@ -12,6 +12,10 @@ npm install
 
 Dette vil installere filene som vil gjøre denne siden kjørbar
 
+```bash
+npm install -g wrangler
+```
+
 Derretter vil vi skrive inn kommandoen under
 
 ```bash

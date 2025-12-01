@@ -15,7 +15,6 @@ export async function loginUser(
   email: string,
   password: string
 ): Promise<LoginSuccess | LoginFail> {
-  // The only correct cast:
   const db = getDb(env as unknown as Env);
 
   const rows = await db

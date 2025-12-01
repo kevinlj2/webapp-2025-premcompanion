@@ -3,6 +3,7 @@ import { prefix, render, route } from "rwsdk/router";
 import { Document } from "@/app/Document";
 
 import { User } from "./db/schema/user-schema";
+
 import { setCommonHeaders } from "./app/headers";
 import { Home } from "./app/pages/Home";
 import { TeamsPage } from "./app/pages/TeamsPage";
@@ -12,10 +13,6 @@ import { LoginPage } from "./app/pages/LoginPage";
 import { ProfilePage } from "./app/pages/ProfilePage";
 import { RegisterPage } from "./app/pages/RegisterPage";
 
-export interface Env {
-  premcompanion_db: D1Database;
-}
-
 export type AppContext = {
   user: User | undefined;
   authUrl: string;
@@ -23,6 +20,7 @@ export type AppContext = {
 
 export default defineApp([
   setCommonHeaders(),
+
   prefix("/api/v1/premcompanion", [
     route(
       "/",
@@ -32,10 +30,13 @@ export default defineApp([
           headers: { "Content-Type": "application/json" },
         })
     ),
-    route("/:id", (ctx: { params: { id: any } }) => {
-      const { id } = ctx.params;
+
+    route("/:id", (ctx: { params: { id: string } }) => {
       return new Response(
-        JSON.stringify({ message: `Prem Root ${id}`, success: true }),
+        JSON.stringify({
+          message: `Prem Root ${ctx.params.id}`,
+          success: true,
+        }),
         {
           status: 200,
           headers: { "Content-Type": "application/json" },
@@ -43,6 +44,7 @@ export default defineApp([
       );
     }),
   ]),
+
   render(Document, [
     route("/", Home),
     route("/teams", TeamsPage),

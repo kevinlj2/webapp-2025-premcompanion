@@ -15,8 +15,9 @@
     {
       "binding": "premcompanion_db",
       "database_name": "premcompanion-db",
-      "database_id": "6b29fa44-93b1-4e2a-9daa-3be35570013d",
-      "migrations_dir": "drizzle"
+      "database_id": "353eef97-22ec-4d1d-9325-88974f7d7bae",
+      "migrations_dir": "drizzle",
+      "remote": true
     }
   ],
   "r2_buckets": [
