@@ -5,7 +5,7 @@ export default function Nav() {
         <li>
           <a
             href="/"
-            className="block px-6 py-3 rounded-lg text-sm font-medium hover:bg-gray-700 transition-colors"
+            className="block px-6 py-3 rounded-lg text-sm font-medium hover:bg-gray-700 transition-colors my-8"
           >
             Overview
           </a>
@@ -20,34 +20,10 @@ export default function Nav() {
         </li>
         <li>
           <a
-            href="/tickets"
-            className="block px-6 py-3 rounded-lg text-sm font-medium hover:bg-gray-700 transition-colors"
-          >
-            Tickets
-          </a>
-        </li>
-        <li>
-          <a
             href="/history"
             className="block px-6 py-3 rounded-lg text-sm font-medium hover:bg-gray-700 transition-colors"
           >
             History
-          </a>
-        </li>
-        <li>
-          <a
-            href="/help"
-            className="block px-6 py-3 rounded-lg text-sm font-medium hover:bg-gray-700 transition-colors"
-          >
-            Help
-          </a>
-        </li>
-        <li>
-          <a
-            href="/contact"
-            className="block px-6 py-3 rounded-lg text-sm font-medium hover:bg-gray-700 transition-colors"
-          >
-            Contact us
           </a>
         </li>
         <li>
