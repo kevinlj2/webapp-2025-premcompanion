@@ -7,7 +7,6 @@ import { setCommonHeaders } from "./app/headers";
 import { Home } from "./app/pages/Home";
 import { TeamsPage } from "./app/pages/TeamsPage";
 import { TransactionHistory } from "./app/pages/TransactionHistory";
-import { ContactPage } from "./app/pages/ContactPage";
 import { TicketsPage } from "./app/pages/TicketsPage";
 import { LoginPage } from "./app/pages/LoginPage";
 import { ProfilePage } from "./app/pages/ProfilePage";
@@ -49,7 +48,6 @@ export default defineApp([
     route("/teams", TeamsPage),
     route("/tickets/:fixtureId", TicketsPage),
     route("/history", TransactionHistory),
-    route("/contact", ContactPage),
     route("/profile", ProfilePage),
     route("/login", LoginPage),
     route("/register", RegisterPage),
