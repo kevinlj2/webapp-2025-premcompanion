@@ -1,9 +1,11 @@
+// src/app/actions/login.ts
 "use server";
 
 import { getDb } from "@/db/client";
 import { users } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { env } from "cloudflare:workers";
+import type { Env } from "@/env";
 import { verifyPassword } from "../lib/hash";
 
 type LoginSuccess = { ok: true; email: string };
@@ -13,7 +15,8 @@ export async function loginUser(
   email: string,
   password: string
 ): Promise<LoginSuccess | LoginFail> {
-  const db = getDb(env);
+  // The only correct cast:
+  const db = getDb(env as unknown as Env);
 
   const rows = await db
     .select()

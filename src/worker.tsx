@@ -13,7 +13,7 @@ import { ProfilePage } from "./app/pages/ProfilePage";
 import { RegisterPage } from "./app/pages/RegisterPage";
 
 export interface Env {
-  DB: D1Database;
+  premcompanion_db: D1Database;
 }
 
 export type AppContext = {
