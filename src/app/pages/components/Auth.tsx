@@ -36,7 +36,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     localStorage.setItem("user", result.email);
 
     setIsAuthenticated(true);
-    setUsername(result.email);
+    setUsername(email);
   };
 
   const logout = () => {
@@ -50,7 +50,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     <AuthContext.Provider
       value={{ isAuthenticated, username, isLoading, login, logout }}
     >
-      {children}
+      {isLoading ? null : children}
     </AuthContext.Provider>
   );
 };

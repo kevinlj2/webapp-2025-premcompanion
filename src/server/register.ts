@@ -12,5 +12,5 @@ export async function registerUser(email: string, password: string) {
   const hashed = await hashPassword(password);
   await db.insert(users).values({ email, password: hashed });
 
-  return { ok: true };
+  return { ok: true, email };
 }
