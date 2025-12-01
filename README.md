@@ -1,30 +1,32 @@
 # Info
 
-For å bruke denne må du ha docker installert lokalt.
+For å bruke denne må du ha node lastet ned.
 
-Se [docker sin hjemmeside](https://www.docker.com/get-started/) for installasjonsinstruksjoner
+Se [node sin hjemside](https://nodejs.org/en/download) for installasjonsinstruksjoner
 
-Hvis på Mac så anbefales det å bruke [orbstack](https://orbstack.dev/) som er en lettere og raskere versjon av docker desktop
-
-Når docker er installert, så kan du starte prosjektet med
+Når node er installert, så kan du starte prosjektet med
 
 ```bash
-docker compose up --build
+npm install
 ```
 
-Hvis du vil kjøre i bakgrunnen kan du legge til `-d` flagget
+Dette vil installere filene som vil gjøre denne siden kjørbar
+
+Derretter vil vi skrive inn kommandoen under
 
 ```bash
-docker compose up --build -d
+npm run dev
 ```
 
-Hvis du vil stoppe serveren kan du bruke
+Dette vil starte serveren og gi mulighet til å åpne nettsiden
 
-```bash
-docker compose down
+Hvis du vil lukke serveren eller restarte pga. teknisk problem så kan du bruke kontrollene under
+
+```
+CTRL + C
 ```
 
-Hvis denne feiler så kan det hende du først må slette node_modules og lock filen. Deretter installere og prøve å starte serveren med uten docker. Dette for å få laget ".wrangler" mappen.
+Dette vil resette terminalen slik at du kan kjøre oppstarten igjen.
 
 Med pnpm:
 
@@ -40,11 +42,8 @@ npm install
 npm run dev
 ```
 
-Deretter prøver å starte med docker igjen.
+//
 
-```bash
-docker compose up --build
-```
-
-I fremtiden kan du bare bruke `docker compose up` for å starte serveren igjen
-
+Vi har ingen funksjoner som må testes utenfor nettsiden i seg selv.
+Alle funksjonene har en oppgave på nettsiden
+Alle tokens er i .env og config filene er wrangler.jasonc og drizzle.config.ts
