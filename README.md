@@ -4,7 +4,7 @@ For å bruke denne må du ha node lastet ned.
 
 Se [node sin hjemside](https://nodejs.org/en/download) for installasjonsinstruksjoner
 
-Når node er installert, så kan du starte prosjektet med
+Når node er installert, så kan du starte prosjektet med å åpne terminalen og skrive i rootmappa
 
 ```bash
 npm install
@@ -12,18 +12,36 @@ npm install
 
 Dette vil installere filene som vil gjøre denne siden kjørbar
 
+Derretter laster vi ned wrangler for å kunne opperere databasen
+
 ```bash
 npm install -g wrangler
+```
+
+Derretter skriver man wrangler login for å få tilgang til databasen som er på cloudflare !NB er viktig for at det skal funke
+
+```bash
+wrangler login
 ```
 
 Derretter vil vi skrive inn kommandoen under
 
 ```bash
+wrangler d1 migrations apply premcompanion-db
+```
+
+for at din lokale database skal få tilgang til tabellen
+
+Derretter skriver man npm run dev for å starte dev hosten
+
+```bash
 npm run dev
 ```
 
-Dette vil starte serveren og gi mulighet til å åpne nettsiden
+Første npm run dev vil feile (pga vet ikke hvorfor)
+men andre npm run dev vil fungere og gi riktig utfall
 
+Dette vil starte serveren og gi mulighet til å åpne nettsiden
 Hvis du vil lukke serveren eller restarte pga. teknisk problem så kan du bruke kontrollene under
 
 ```
@@ -48,10 +66,12 @@ npm run dev
 
 //
 
-Vi har ingen funksjoner som må testes utenfor nettsiden i seg selv.
-Alle funksjonene har en oppgave på nettsiden
+Vi har ingen funksjoner som må testes utenfor nettsiden i seg selv bortsett fra databasen
 Alle tokens er i .env og config filene er wrangler.jasonc og drizzle.config.ts
 
-Det finnes allerede en konto som heter admin@admin.no og passordet er admin
+På profile siden vil du få tilgang til å logge deg inn, men problemet er at du ikke har en bruker
+så da kan du trykke på "Create User" for å kunne lage deg en bruker. (DEN SKAL IKKE VÆRE EKTE- bruk falsk mail og passord f. eks test@test.no, passord: test1)
+
 Noe av informasjonen er kun placeholder for å vise hvordan det ser ut.
-Det er mulig å lage egen konto hvis det ønskes.
+
+Databasen på cloudflare vil bli slettet etter eksamensvurdering er tilbake.
