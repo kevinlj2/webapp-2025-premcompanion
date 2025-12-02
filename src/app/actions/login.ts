@@ -1,4 +1,3 @@
-// src/app/actions/login.ts
 "use server";
 
 import { getDb } from "@/db/client";
@@ -8,34 +7,14 @@ import { env } from "cloudflare:workers";
 import type { Env } from "@/env";
 import { verifyPassword } from "../lib/hash";
 
-type LoginSuccess = { ok: true; email: string };
-type LoginFail = { ok: false; message: string };
-
-export async function loginUser(
-  email: string,
-  password: string
-): Promise<LoginSuccess | LoginFail> {
+export async function loginUser(email: string, password: string) {
   const db = getDb(env as unknown as Env);
 
-  const rows = await db
-    .select()
-    .from(users)
-    .where(eq(users.email, email))
-    .all();
+  const row = await db.select().from(users).where(eq(users.email, email)).get();
+  if (!row) return { ok: false, message: "User not found" };
 
-  const user = rows[0];
+  const valid = await verifyPassword(password, row.password);
+  if (!valid) return { ok: false, message: "Incorrect password" };
 
-  if (!user) {
-    return { ok: false, message: "User not found" };
-  }
-
-  const valid = await verifyPassword(password, user.password);
-  if (!valid) {
-    return { ok: false, message: "Incorrect password" };
-  }
-
-  return {
-    ok: true,
-    email: user.email,
-  };
+  return { ok: true, email: row.email };
 }

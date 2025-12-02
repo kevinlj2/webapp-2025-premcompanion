@@ -1,4 +1,3 @@
-// src/app/pages/components/Auth.tsx
 "use client";
 
 import { AuthContextType } from "@/app/lib/auth";
@@ -51,7 +50,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     <AuthContext.Provider
       value={{ isAuthenticated, username, isLoading, login, logout }}
     >
-      {isLoading ? null : children}
+      {children}
     </AuthContext.Provider>
   );
 };
