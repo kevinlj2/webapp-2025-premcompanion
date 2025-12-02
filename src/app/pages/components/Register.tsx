@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { registerUser } from "@/server/register";
 
 export default function Register() {
   const [email, setEmail] = useState("");
@@ -10,14 +9,18 @@ export default function Register() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const result = await registerUser(email, password);
+    const result = await fetch("/api/v1/premcompanion/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    }).then((r) => r.json());
 
     if (!result.ok) {
-      alert(result.message);
+      alert(result.message ?? "Registration failed");
       return;
     }
 
-    const userEmail = (result as { ok: true; email: string }).email;
+    const userEmail = result.email as string;
 
     localStorage.setItem("auth", "true");
     localStorage.setItem("user", userEmail);
