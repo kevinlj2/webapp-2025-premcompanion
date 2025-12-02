@@ -62,7 +62,6 @@ export default function Transaction() {
             <div className="text-right pr-4">Amount</div>
           </div>
 
-          {/* Only show rows if logged in */}
           {isLoggedIn ? (
             <>
               {transactions.map((t, index) => (
@@ -82,7 +81,6 @@ export default function Transaction() {
                 </div>
               ))}
 
-              {/* empty rows for spacing */}
               {[...Array(5)].map((_, i) => (
                 <div
                   key={"empty" + i}

@@ -24,11 +24,17 @@ Derretter skriver man wrangler login for å få tilgang til databasen som er på
 wrangler login
 ```
 
+Da vil du få et popup vindu av cloudflare. Bruk hvilken som helst konto for oAuth
+Da trykker du på allow så kan du lukke vinduet
+
 Derretter vil vi skrive inn kommandoen under
 
 ```bash
 wrangler d1 migrations apply premcompanion-db
 ```
+
+Da får du opp en promt som spør om du vil migrere
+Da trykker du på Y for YES
 
 for at din lokale database skal få tilgang til tabellen
 
@@ -38,7 +44,7 @@ Derretter skriver man npm run dev for å starte dev hosten
 npm run dev
 ```
 
-Første npm run dev vil feile (pga vet ikke hvorfor)
+Første npm run dev vil feile hvis du er for sjapp
 men andre npm run dev vil fungere og gi riktig utfall
 
 Dette vil starte serveren og gi mulighet til å åpne nettsiden

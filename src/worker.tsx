@@ -57,7 +57,6 @@ export default defineApp([
             );
           }
 
-          // Use your existing Drizzle helper, same as in your server action
           const db = getDb(env as unknown as Env);
 
           const hashed = await hashPassword(password);
